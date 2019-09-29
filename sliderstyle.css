@@ -1,0 +1,38 @@
+/*SLIDER*/
+#home
+{
+	width: 100%;
+}
+#slider
+{
+	padding-bottom: 10px;
+}
+.carousel-caption
+{
+	top: 50%;
+	transform: translateY(-50%);
+	bottom: initial;
+	text-align: left;
+	text-transform: 1000;
+}
+.carousel-caption h1
+{
+	color: #111111;
+	font-size: 47px;
+	font-family: "Courier Header";
+	font-weight: bold
+
+}
+.carousel-caption h4
+{
+	color: #fff;
+	font-size: 30px;
+	font-family: "Montserrat";
+	font-style: italic;
+	/*font-weight: bold;*/
+	
+}
+.opacity
+{
+	opacity: 0.8;
+}
