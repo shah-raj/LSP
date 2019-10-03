@@ -1,43 +1,43 @@
 #Navigation
 #nav-bar
 {
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 50;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
 }
 .navbar
 {
-	background: #fff;
+  background: #fff;
 }
 .navbar-toggler
 {
-	border: none;
+  border: none;
 }
 .navbar-brand
 {
-	font-family: "Avengeance Heroic Avenger"
+  font-family: "Avengeance Heroic Avenger"
 }
 .nav-link
 {
-	color: #555;
-	font-weight: 600;
-	font-size: 16px;
+  color: #555;
+  font-weight: 600;
+  font-size: 16px;
 }
 .navbar-brand img
 {
-	height: 40px;
-	padding-left: 20px;
+  height: 40px;
+  padding-left: 20px;
 }
 .navbar-nav li
 {
-	padding: 0 10px;
+  padding: 0 10px;
 
 }
 .navbar-nav li a
 {
-	float: right;
-	
+  float: right;
+  
 }
 .navbar-nav a::before {
   content: '';
@@ -76,8 +76,8 @@
 }
 
 #head1 {
-	font-weight: bold;
-	margin: 0;
+  font-weight: bold;
+  margin: 0;
   padding-bottom: 20px;
 }
 
@@ -139,6 +139,12 @@ select
   width: 100%;
 }
 
+h5
+{
+  color: black;
+  font-size: 100px;
+}
+
 #scontainer {
   background-color: #fff;
   border-radius: 10px;
@@ -146,13 +152,13 @@ select
       0 10px 10px rgba(0,0,0,0.22);
   position: relative;
   overflow: hidden;
-  /* width: 768px;
-  max-width: 100%; */
+   width: 768px;
+  max-width: 100%; 
   min-height: 520px;
 }
 
 .form-container {
-	visibility: visible;
+  visibility: visible;
   position: absolute;
   top: 0;
   height: 100%;
