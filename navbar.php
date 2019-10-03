@@ -53,8 +53,6 @@
                         $val = $_GET['UserType'];
                         if ($val == "supplier")
                         {
-                          $query1 = "SELECT * FROM supplier WHERE smail = $_GET[cemail]";
-                          echo pg_query($query1);
                           $query = "INSERT INTO supplier VALUES ('419133487','$_GET[cname]','485727229','$_GET[cpass]','$_GET[cemail]')";
 
                           $result = pg_query($query);
