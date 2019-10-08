@@ -21,19 +21,19 @@
     	}
     	else
     	{                 
-			$result1 = pg_query("SELECT * FROM supplier WHERE smail = '" .$_GET['fmail']. "'");
-			$result2 = pg_query("SELECT * FROM receiver WHERE rmail = '" .$_GET['fmail']. "'");
+			$result1 = pg_query("SELECT * FROM supplier WHERE smail = '" .$_GET['fmail']. "' AND sstatus = 1");
+			$result2 = pg_query("SELECT * FROM receiver WHERE rmail = '" .$_GET['fmail']. "' AND sstatus = 1");
 			$count1  = pg_num_rows($result1);
 			$count2  = pg_num_rows($result2);
 			if($count1==1) 
 			{
-				$res = pg_query("SELECT spass from supplier WHERE smail = '" .$_GET['fmail']. "'");
+				$res = pg_query("SELECT spass from supplier WHERE smail = '" .$_GET['fmail']. "' AND sstatus = 1");
 				$res1 = pg_fetch_result($res, 0, 0);
 				if($res1 == $_GET['fpass'])
 				{
 					session_start();
 					$flag = "3";
-					$res2 = pg_query("SELECT sname from supplier WHERE smail = '" .$_GET['fmail']. "'");
+					$res2 = pg_query("SELECT sname from supplier WHERE smail = '" .$_GET['fmail']. "' AND sstatus = 1");
 					$res3 = pg_fetch_result($res2, 0, 0);
 					$_SESSION['name']=$res3;
     				$_SESSION['mail']=$_GET['fmail'];
@@ -49,13 +49,13 @@
 			}
 			elseif($count2==1)
 			{
-				$res = pg_query("SELECT rpass from receiver WHERE rmail = '" .$_GET['fmail']. "'");
+				$res = pg_query("SELECT rpass from receiver WHERE rmail = '" .$_GET['fmail']. "' AND rstatus = 1");
 				$res1 = pg_fetch_result($res, 0, 0);
 				if($res1 == $_GET['fpass'])
 				{
 					session_start();
 					$flag = "4";
-					$res2 = pg_query("SELECT rname from receiver WHERE rmail = '" .$_GET['fmail']. "'");
+					$res2 = pg_query("SELECT rname from receiver WHERE rmail = '" .$_GET['fmail']. "' AND rstatus = 1");
 					$res3 = pg_fetch_result($res2, 0, 0);
 					$_SESSION['name']=$res3;
     				$_SESSION['mail']=$_GET['fmail'];
