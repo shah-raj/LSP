@@ -1,14 +1,6 @@
 <html>
   <head>
     <title>Raj Logistics Website</title>
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
   <link rel="stylesheet" type="text/css" href="myteststyle.css">
 </head>
 <!-- Navbar -->
@@ -72,14 +64,14 @@
                           }
                           elseif($count==0 && $_GET['cemail']!="")
                           {
-                            echo '<script type="text/JavaScript"> alert("You are successfully registered!"); </script>';
+                            echo '<script type="text/JavaScript"> alert("You are successfully registered, please wait tille we verify your email!"); </script>';
                             if ($val == "supplier")
                               {
                                 $res = pg_query("SELECT max(sid) from supplier");
                                 $res1 = pg_fetch_result($res, 0, 0);
                                 $var2 = '+1';
                                 $c = $res1+$var2;
-                                $query = "INSERT INTO supplier VALUES ($c,'$_GET[cname]','$_GET[cgstin]','$_GET[cpass]','$_GET[cemail]')";
+                                $query = "INSERT INTO supplier VALUES ($c,'$_GET[cname]','$_GET[cgstin]','$_GET[cpass]','$_GET[cemail]',0)";
                                 $res = pg_query($query);
                               }
                               elseif ($val == "client")
@@ -88,7 +80,7 @@
                                 $res1 = pg_fetch_result($res, 0, 0);
                                 $var2 = '+1';
                                 $c = $res1+$var2;
-                                $query = "INSERT INTO receiver VALUES ($c,'$_GET[cname]','$_GET[cgstin]','$_GET[cpass]','$_GET[cemail]')";
+                                $query = "INSERT INTO receiver VALUES ($c,'$_GET[cname]','$_GET[cgstin]','$_GET[cpass]','$_GET[cemail]',0)";
                                 $res = pg_query($query);
                               }
                           }
