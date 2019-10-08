@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="sliderstyle.php">
+	<link rel="stylesheet" type="text/css" href="sliderstyle.css">
 </head>
 <body>
 <!-- Slider -->
