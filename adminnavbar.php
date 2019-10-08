@@ -14,7 +14,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#pending">PENDING REQUESTS</a>
+          <a class="nav-link" href="supplieradmin.php">PENDING SUPPLIER REQUESTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="receiveradmin.php">PENDING RECIEVER REQUESTS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#ongoing">ON-GOING ORDERS</a>
