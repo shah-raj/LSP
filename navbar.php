@@ -1,6 +1,15 @@
 <html>
   <head>
-  <link rel="stylesheet" type="text/css" href="navbarstyle.css">
+    <title>Raj Logistics Website</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+  <link rel="stylesheet" type="text/css" href="myteststyle.css">
 </head>
 <!-- Navbar -->
 <section id = "nav-bar">
@@ -28,7 +37,6 @@
           </button>
           <div class="modal fade" id="myModal" role="dialog" data-backdrop="false">
             <div class="modal-dialog">
-              
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
@@ -37,55 +45,74 @@
                 <div class="modal-body">
                   <div class="container" id="scontainer">
                     <div class="form-container sign-up-container">
-                      <form action="#">
+                    <form action="#">
                         <h1 id="head1">Create Account</h1>
-                        <input type="text" placeholder="Name" name = 'cname'/>
-                        <input type="email" placeholder="Email" name = 'cemail'/>
-                        <input type="password" placeholder="Password" name = 'cpass'/>
+                        <input type="text" placeholder="Name" name = 'cname' required />
+                        <input type="email" placeholder="Email" name = 'cemail' required />
+                        <input type="password" placeholder="Password" name = 'cpass' required />
                         <select name="UserType">
                           <option value="supplier">Supplier</option>
                           <option value="client">Client</option>
                         </select>                  
+                        <input type="text" placeholder="GSTIN" name = 'cgstin'/>
                         <button id = "sbutton">Sign Up</button>
                       </form>
                       <?php
                         $db = pg_connect('host=localhost dbname=LSP user=postgres password=1234 port = 5432');
-                        $val = $_GET['UserType'];
-                        if ($val == "supplier")
+                        if (isset($_GET['cemail']))
                         {
-                          $query = "INSERT INTO supplier VALUES ('419133487','$_GET[cname]','485727229','$_GET[cpass]','$_GET[cemail]')";
-
-                          $result = pg_query($query);
-                        }
-                        else
-                        {
-                          $query = "INSERT INTO receiver VALUES ('659133487','$_GET[cname]','485727229','$_GET[cpass]','$_GET[cemail]')";
-                          $result = pg_query($query);
-                        }
+                          $val = $_GET['UserType'];
+                          $result1 = pg_query("SELECT * FROM supplier WHERE smail = '" .$_GET['cemail']. "'");
+                          $result2 = pg_query("SELECT * FROM receiver WHERE rmail = '" .$_GET['cemail']. "'");
+                          $count1  = pg_num_rows($result1);
+                          $count2  = pg_num_rows($result2);
+                          $count = $count1 + $count2;
+                          if($count==1) {
+                            echo '<script type="text/JavaScript"> alert("Email is already Registered!"); </script>'; 
+                          }
+                          elseif($count==0 && $_GET['cemail']!="")
+                          {
+                            echo '<script type="text/JavaScript"> alert("You are successfully registered!"); </script>';
+                            if ($val == "supplier")
+                              {
+                                $res = pg_query("SELECT max(sid) from supplier");
+                                $res1 = pg_fetch_result($res, 0, 0);
+                                $var2 = '+1';
+                                $c = $res1+$var2;
+                                $query = "INSERT INTO supplier VALUES ($c,'$_GET[cname]','$_GET[cgstin]','$_GET[cpass]','$_GET[cemail]')";
+                                $res = pg_query($query);
+                              }
+                              elseif ($val == "client")
+                              {
+                              $res = pg_query("SELECT max(rid) from receiver");
+                                $res1 = pg_fetch_result($res, 0, 0);
+                                $var2 = '+1';
+                                $c = $res1+$var2;
+                                $query = "INSERT INTO receiver VALUES ($c,'$_GET[cname]','$_GET[cgstin]','$_GET[cpass]','$_GET[cemail]')";
+                                $res = pg_query($query);
+                              }
+                          }
+                      }
                       ?>
                     </div>
                     <div class="form-container sign-in-container">
-                      <form method="POST" action="test1.php">
+                      <form action="signinaction.php">
                         <h1 id="head1">Sign in</h1>
-                        <input type="email" name="fname" placeholder="Email" />
-                        <input type="password" name="pw" placeholder="Password" />
-                        <a href="#" id="aa">Forgot your password?</a>
+                        <input type="email" name="fmail" placeholder="Email" required />
+                        <input type="password" name="fpass" placeholder="Password" required />
                         <button id = "sbutton">Sign In</button>
                       </form>
-                      <?php  
-                        $_SESSION['fname'] = isset($_POST['fname']) ? $_POST['fname'] : '';
-                      ?>
                     </div>
                     <div class="overlay-container">
                       <div class="overlay">
                         <div class="overlay-panel overlay-left">
-                          <h1 id="head1">Welcome Back!</h1>
-                          <p id="para">If you do not have an account, register now!</p>
+                          <h1 id="head1">Hello, Friend!</h1>
+                          <p id="para">If you already have an account, please sign in!</p>                      
                           <button class="ghost" id="signIn">Sign In</button>
                         </div>
                         <div class="overlay-panel overlay-right">
-                          <h1 id="head1">Hello, Friend!</h1>
-                          <p id="para">If you already have an account, please sign in!</p>
+                          <h1 id="head1">Welcome Back!</h1>
+                          <p id="para">If you do not have an account, register now!</p>
                           <button class="ghost" id="signUp">Sign Up</button>
                         </div>
                       </div>
