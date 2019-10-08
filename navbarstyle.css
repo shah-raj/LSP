@@ -145,6 +145,16 @@ h5
   font-size: 100px;
 }
 
+.modal-dialog
+{
+  margin-right: 700px;
+}
+
+.modal-content
+{
+  width: 160%;
+}
+
 #scontainer {
   background-color: #fff;
   border-radius: 10px;
@@ -152,9 +162,9 @@ h5
       0 10px 10px rgba(0,0,0,0.22);
   position: relative;
   overflow: hidden;
-   width: 768px;
-  max-width: 100%; 
-  min-height: 520px;
+  width: 768px;
+  max-width: 170%; /*width of the container*/
+  min-height: 570px; /*height of the container*/
 }
 
 .form-container {
