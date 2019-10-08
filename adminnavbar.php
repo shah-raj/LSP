@@ -14,22 +14,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#corder">ON-GOING ORDERS</a>
+          <a class="nav-link" href="#pending">PENDING REQUESTS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#porders">PAST ORDERS</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#home">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#service">SERVICES</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#our-team">OUR TEAM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#testimonials">TESIMONIALS</a>
+          <a class="nav-link" href="#ongoing">ON-GOING ORDERS</a>
         </li>
         <li class="nav-item">
           <form action="#" method="post">
