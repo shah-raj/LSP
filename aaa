@@ -1,0 +1,42 @@
+%% Input
+i = 1;
+numx = input('Enter number of values in signal: ');
+while (i<=numx)
+    x(1,i) = input('');
+    i = i+1;
+end
+ 
+numh = input('Enter number of values in signal h: ');
+i=1;
+while (i<=numh)
+    h(1,numh-i+1) = input('');
+    i = i+1;
+end
+% Padding and processing
+n = length(h);
+xnew = [zeros(1,(n-1)),x,zeros(1,(n-1))];
+ 
+%% Linear convolution
+i=1;
+while(i<=length(xnew)-n+1)
+   op(1,i) = sum(xnew(:,i:i+n-1).*h);
+   i = i+1;
+end
+disp(op)
+%%
+range = (0:length(xnew)-1);
+% Actual signal X
+subplot(2,2,1)
+stem(xnew,range)
+title('Input signal x(n)')
+ 
+% Impulse Signal H
+subplot(2,2,2)
+h = [h,zeros(1,(length(xnew)-length(h)))];
+stem(range,h)
+title('Impulse signal h(n)')
+ 
+% Output signal Y
+subplot(2,2,3)
+op = [op,zeros(1,(length(xnew)-length(op)))];
+stem(op)
